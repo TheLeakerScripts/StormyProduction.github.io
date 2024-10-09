@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌪Stormy Production🌪</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #0f2027;
+            background: -webkit-linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-top: 20px;
+            color: #ffdd00;
+            text-align: center;
+            text-shadow: 0px 0px 10px rgba(255, 255, 0, 0.7);
+        }
+
+        .textbox-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 600px;
+            margin: 20px auto;
+            padding-bottom: 40px;
+        }
+
+        .textbox {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.2s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .textbox:hover,
+        .textbox:active {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .textbox-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #ffdd00;
+        }
+
+        .stars {
+            color: gold;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        /* Open Button */
+        .open-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background-color: #ffdd00;
+            color: #333;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 100;
+        }
+
+        .open-button:hover {
+            background-color: #ffaa00;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            padding-top: 60px;
+            transition: left 0.3s;
+            z-index: 99;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 15px;
+            color: #ffdd00;
+            text-decoration: none;
+            font-size: 1.2em;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Sparkling blue light animation */
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .sparkle {
+            width: 5px;
+            height: 5px;
+            background-color: #00e5ff;
+            position: absolute;
+            border-radius: 50%;
+            animation: sparkle 3s infinite ease-in-out;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                transform: translateY(-50px) translateX(0) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(0) translateX(0) scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="open-button" onclick="toggleSidebar()">Open</button>
+    <h1>🌪Stormy Production🌪</h1>
+    <div class="textbox-container">
+        <div class="textbox">
+            <div class="textbox-title">Is it good?</div>
+            <p>Yes, it is a good game, you should test it!</p>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="textbox">
+            <div class="textbox-title">How to play it?</div>
+            <p>Use the controls to command tornados, rain, and more! You play as the tornado.</p>
+        </div>
+        <div class="textbox">
+            <div class="textbox-title">How do I report bugs?</div>
+            <p>Reporting bugs helps us improve. Tag the owner or a developer to fix it.</p>
+        </div>
+        <div class="textbox">
+            <div class="textbox-title">How do I make suggestions?</div>
+            <p>Join the Discord and tag an owner or developer with your suggestion. We'll check it out!</p>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <a href="https://discord.gg/dArAFQn4wc" target="_blank">Discord</a>
+        <a href="https://scratch.mit.edu/projects/1056946984/" target="_blank">Game</a>
+    </div>
+
+    <!-- Sparkles Animation -->
+    <div class="sparkles">
+        <div class="sparkle" style="top: 10%; left: 20%; animation-delay: 0.5s;"></div>
+        <div class="sparkle" style="top: 30%; left: 80%; animation-delay: 1s;"></div>
+        <div class="sparkle" style="top: 50%; left: 40%; animation-delay: 1.5s;"></div>
+        <div class="sparkle" style="top: 70%; left: 60%; animation-delay: 2s;"></div>
+        <div class="sparkle" style="top: 90%; left: 10%; animation-delay: 2.5s;"></div>
+    </div>
+
+    <script>
+        let sidebarOpen = false;
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            const openButton = document.querySelector(".open-button");
+
+            if (sidebarOpen) {
+                sidebar.style.left = "-250px";
+                openButton.textContent = "Open";
+            } else {
+                sidebar.style.left = "0";
+                openButton.textContent = "Close";
+            }
+
+            sidebarOpen = !sidebarOpen;
+        }
+    </script>
+</body>
+</html>
